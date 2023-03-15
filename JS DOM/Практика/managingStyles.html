@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Знакомство с CSS</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+    <h1><span class="bigred">JavaScript.</span> Работа c DOM</h1>
+    <div class = "fontsize30">Урок "DOM2"</div>
+    <div class="italic">Работаем над <span class = "yellow">динамическим изменением стилей</span></div>
+
+        <div class="lesson">
+        <div class="lesson_text">Текст</div>
+        <ul name = "list" class="lesson_list">
+            <li class="lesson_item-list">Пункт № 1</li>
+            <li id = "listItem" class="lesson_item-list">Пункт № 2</li>
+            <li class="lesson_item-list">Пункт № 3
+                <ul class="lesson_sub-list">
+                    <li class="lesson_item-sub-list">ПодПункт № 1</li>
+                    <li data-item="85" class="lesson_item-sub-list">ПодПункт № 2</li>
+                    <li class="lesson_item-sub-list">ПодПункт № 3</li>
+                </ul>
+            </li>
+            <li class="lesson_item-list lesson_item-list_blue">Пункт № 4</li>     
+        </ul>
+    </div>
+        <script src="/scripts/managingStyles.js"></script>
+</body>
+
+</html>

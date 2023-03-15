@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+  <meta charset="UTF-8">
+  <title>Click Game</title>
+  <style>
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+    }
+    .element {
+      width: 100px;
+      height: 100px;
+      background-color: #ccc;
+      margin: 10px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 24px;
+      color: #333;
+      cursor: pointer;
+    }
+    .element.blue {
+      background-color: blue;
+      color: #fff;
+    }
+    .element.green {
+      background-color: green;
+      color: #fff;
+    }
+    .message {
+      position: fixed;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: yellow;
+      padding: 10px;
+      font-size: 18px;
+      font-weight: bold;
+      text-align: center;
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+  <div class="container"></div>
+  <script>
+// Допустим, мы хотим создать простую игру на JavaScript, в которой пользователь должен кликнуть на определенные элементы на странице в заданном порядке. Для этого нам понадобятся перечисленные методы:
+
+// querySelector - для поиска элементов на странице по селектору
+// createElement - для создания новых элементов
+// createTextNode - для создания текстовых узлов
+// append() - для добавления элементов в родительский элемент
+// insertAdjacentHTML - для вставки новых элементов на страницу
+// cloneNode - для создания копий элементов
+// remove() - для удаления элементов
+// Вот как может выглядеть решение этой задачи:
+
+
+// Определяем массив с элементами, которые пользователь должен кликать
+const elements = ['element1', 'element2', 'element3', 'element4'];
+
+// Находим родительский элемент, в который будем добавлять элементы
+const parentElement = document.querySelector('.container');
+
+// Создаем элементы в цикле и добавляем их в родительский элемент
+for (let i = 0; i < elements.length; i++) {
+  // Создаем новый элемент и добавляем класс и атрибуты
+  const newElement = document.createElement('div');
+  newElement.classList.add('element');
+  newElement.setAttribute('data-index', i);
+
+  // Создаем текстовый узел и добавляем его в новый элемент
+  const textNode = document.createTextNode(elements[i]);
+  newElement.appendChild(textNode);
+
+  // Добавляем новый элемент в родительский элемент
+  parentElement.appendChild(newElement);
+}
+
+// Создаем переменные для отслеживания текущего элемента, который должен быть кликнут, и общего числа кликов
+let currentIndex = 0;
+let totalClicks = 0;
+
+// Добавляем обработчик клика на родительский элемент
+parentElement.addEventListener('click', (event) => {
+  // Находим элемент, который был кликнут
+  const clickedElement = event.target;
+
+
+  // Проверяем, что кликнули именно на нужный элемент
+  if (clickedElement.classList.contains('element') && clickedElement.getAttribute('data-index') == currentIndex) {
+    // Увеличиваем счетчик кликов и текущий индекс
+    totalClicks++;
+    currentIndex++;}
+  
+
+    // Покрасим элемент в зеленый цвет, если все элементы были кликнуты, иначе в синий цвет
+    if (currentIndex === elements.length) {
+      clickedElement.classList.add('green');
+    } else {
+      clickedElement.classList.add('blue');
+    }
+
+    // Показываем сообщение с общим числом кликов
+    const message = `Вы кликнули ${totalClicks} раз`;
+    const messageElement = document.createElement('div');
+    messageElement.classList.add('message');
+    const messageTextNode = document.createTextNode(message);
+    messageElement.appendChild(messageTextNode);
+    parentElement.appendChild(messageElement);
+
+    // Удаляем сообщение через 2 секунды
+    setTimeout(() => {
+      messageElement.remove();
+    }, 2000);
+  
+  }
+)
+
+  </script>
+</body>
+</html>
