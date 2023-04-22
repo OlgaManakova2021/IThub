@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Paint</title>
+	<style>
+		body {
+			height:  100vh;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+		.desk {
+			width: 500px;
+			height:  300px;
+			background-color: beige;
+			position: relative;
+		}
+		.point {
+			width: 2px;
+			height: 2px;
+			background-color: #000;
+			border-radius: 50%;
+			position: absolute;
+		}
+	</style>
+</head>
+<body>
+	<div class="desk"></div>
+
+<script>
+const desk = document.querySelector(".desk");
+let isDrawing = false;
+function draw(el, x, y) {
+	const point = document.createElement("div");
+	point.className = "point";
+	point.style.left = x - 1 + "px";
+	point.style.top = y - 1 + "px";
+	el.append(point);
+}
+function drawPoint(e) {
+	console.log(e.type);
+	switch (e.type) {
+		case "mousedown":
+			isDrawing = true;
+			draw(e.currentTarget, e.offsetX, e.offsetY);
+			break;
+		case "mouseup":
+			isDrawing = false
+			break;
+		case "mousemove":
+			if (isDrawing) {
+				draw(e.currentTarget, e.offsetX, e.offsetY);
+			}
+			break;
+	}
+}
+desk.addEventListener("mousedown", drawPoint);
+desk.addEventListener("mouseup", drawPoint);
+desk.addEventListener("mousemove", drawPoint);
+</script>
+</body>
+</html>
+ 
