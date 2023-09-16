@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Предварительные требования</title>
+  </head>
+  <body>
+    <script>
+      // Оператор Spread (использование - при работе с состоянием компонента, когда необходимо создать новое            состояние для компонента)
+
+      //   const button = {
+      //     width: 200,
+      //     text: 'Buy',
+      //   };
+
+      //   const redButton = {
+      //     ...button,
+      //     color: 'red',
+      //   };
+
+      //   console.table(redButton);
+
+      /* =====================
+    Концепция деструктуризации в JavaScript ES6 позволяет извлекать данные из объектов и массивов,
+    используя новый синтаксис.
+    Вместо того, чтобы получать доступ к каждому свойству объекта или элементу массива отдельно,
+    мы можем одновременно получить доступ к нескольким свойствам или элементам, используя деструктуризацию.
+      ==================================
+    Деструктуризация объектов
+    Пример 1: Деструктуризация объекта   
+ */
+
+      //   const person = {
+      //     firstName: 'Ivan',
+      //     lastName: 'Petrov',
+      //     age: 30,
+      //     email: 'IvanPetrov@example.com',
+      //   };
+
+      /*
+    Чтобы получить доступ к свойствам объекта, мы можем использовать следующий синтаксис:
+ */
+
+      //   const firstName = person.firstName;
+      //   const lastName = person.lastName;
+      //   const age = person.age;
+      //   const email = person.email;
+
+      /*
+    Это может быть неудобно, если у нас есть много свойств в объекте.
+    Вместо этого мы можем использовать деструктуризацию объекта:
+ */
+
+      //   const { firstName, lastName, age, email } = person;
+      //   console.log(lastName, age);
+
+      /*
+    Теперь мы можем использовать переменные firstName, lastName, age и email для доступа к свойствам объекта person.
+    Обратите внимание, что названия переменных соответствуют названиям свойств объекта.
+    */
+      // Еще пример
+
+      // const person = {
+      //           name: 'Ivan',
+      //           age: 30,
+      //           address: {
+      //             city: 'Moscow',
+      //             country: 'Russia',
+      //           },
+      //         };
+
+      //         // Деструктуризация объекта
+      //         const {
+      //           name,
+      //           age,
+      //           address: { city }, // вложенная деструктуризация
+      //         } = person;
+
+      //         console.log(name); // "Ivan"
+      //         console.log(age); // 30
+      //         console.log(city); // "Russia"
+
+      /*
+          Пример 2: Деструктуризация объекта в функции
+          Мы можем также использовать деструктуризацию объекта в функциях.
+          Например:
+       */
+
+      //   function printPerson({ firstName, lastName, age, email }) {
+      //     console.log(`${firstName} ${lastName} (${age}), ${email}`);
+      //   }
+
+      //   const person = {
+      //     firstName: 'Ivan',
+      //     lastName: 'Petrov',
+      //     age: 30,
+      //     email: 'IvanPetrov@example.com',
+      //   };
+
+      //   printPerson(person);
+
+      /*
+          Здесь мы передаем объект person в функцию printPerson,
+          используя деструктуризацию объекта в качестве параметра функции.
+
+          Еще пример:
+          */
+
+      //   const person = {
+      //     firstName: 'Ivan',
+      //     lastName: 'Petrov',
+      //     age: 30,
+      //     email: 'IvanPetrov@example.com',
+      //   };
+
+      //   const personInfo = ({ firstName, email }) => {
+      //     return console.log(
+      //       `Сотрудник ${firstName} просит отправить сообщение по адресу ${email}`
+      //     );
+      //   };
+
+      //   personInfo(person);
+
+      /*
+==================================================
+
+          Деструктуризация массивов (использование - useState)
+          Пример 3: Деструктуризация массива
+          Давайте рассмотрим простой пример массива:
+       */
+
+      //   const numbers = [1, 2, 3];
+
+      /*
+          Чтобы получить доступ к элементам массива, мы можем использовать следующий синтаксис:
+       */
+
+      // const first = numbers[0];
+      // const second = numbers[1];
+      // const third = numbers[2];
+
+      /*
+          Опять же, это может быть неудобно, если у нас есть много элементов в массиве.
+          Вместо этого мы можем использовать деструктуризацию массива:
+       */
+
+      //   const [first, second, third] = numbers;
+      //   console.log(second);
+
+      /*
+          Теперь мы можем использовать переменные first, second и third для доступа к элементам массива numbers.
+
+          Пример 4: Пропуск элементов массива
+          Мы можем также пропустить некоторые элементы массива, используя запятые.
+          Например:
+       */
+
+      // const numbers = [1, 2, 3, 4, 5];
+
+      // const [first, , third, , fifth] = numbers;
+
+      /*
+          Здесь мы пропустили второй и четвертый элементы массива, используя запятые.
+
+          Пример 5: Деструктуризация массива в функции
+          Мы также можем использовать деструктуризацию массива в функциях.
+          Например:
+       */
+
+      //   function printNumbers([first, second, third]) {
+      //     console.log(`First: ${first}, Second: ${second}, Third: ${third}`);
+      //   }
+
+      //   const numbers = [1, 2, 3];
+
+      //   printNumbers(numbers);
+
+      /*
+          Здесь мы передаем массив numbers в функцию printNumbers,
+          используя деструктуризацию массива в качестве параметра функции.
+
+          Пример 7: Оставшиеся элементы массива
+          Мы можем также использовать оператор "..." для получения оставшихся элементов массива.
+          Например:
+      */
+
+      //   const numbers = [1, 2, 3, 4, 5];
+
+      //   const [first, second, ...rest] = numbers;
+      //   console.log(rest);
+
+      /*
+          Здесь мы используем оператор "..." для получения всех оставшихся элементов массива после второго элемента.
+          Они сохраняются в переменной rest.          
+       */
+    </script>
+  </body>
+</html>
